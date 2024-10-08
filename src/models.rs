@@ -52,7 +52,14 @@ pub fn draw_mesh(mesh: &Mesh) {
     context.gl.geometry(&mesh.vertices[..], &mesh.indices[..]);
 }
 
-fn draw_quad(vertices: [Vertex; 4]) {
+pub fn draw_triangle(vertices: [Vertex; 3]) {
+    let context = get_context();
+    let indices = [0, 1, 2];
+    context.gl.draw_mode(DrawMode::Triangles);
+    context.gl.geometry(&vertices, &indices);
+}
+
+pub fn draw_quad(vertices: [Vertex; 4]) {
     let context = get_context();
     let indices = [0, 1, 2, 0, 2, 3];
     context.gl.draw_mode(DrawMode::Triangles);
